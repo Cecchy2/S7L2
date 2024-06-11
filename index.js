@@ -3,12 +3,16 @@ const nameText = document.getElementById("nameText");
 
 window.addEventListener("DOMContentLoaded", () => {
   const secondCounter = sessionStorage.getItem("counter", counter);
+  if (secondCounter) {
+    counter = JSON.parse(secondCounter);
+  }
   const nameListFromStorage = localStorage.getItem("nameList");
   if (nameListFromStorage) {
-    nameList.push(...JSON.parse(nameListFromStorage));
+    nameList.push(JSON.parse(nameListFromStorage));
   }
   svuotaLavagna(nameList); // Update displayed list of names
 });
+
 let nameList = [];
 
 const svuotaLavagna = (nameList) => {
